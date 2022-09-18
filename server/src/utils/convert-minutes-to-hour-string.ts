@@ -1,4 +1,4 @@
-// 18:00 -> 1080
+// 1080 -> 18:00
 
 export function convertMinutesToHourString(minutesAmount: number) {
     const hours = Math.floor(minutesAmount / 60);
@@ -7,4 +7,3 @@ export function convertMinutesToHourString(minutesAmount: number) {
 
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
 }
-

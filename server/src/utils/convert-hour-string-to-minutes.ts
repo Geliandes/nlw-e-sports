@@ -7,4 +7,3 @@ export function convertHourStringToMinutes(hourString:string) {
     
     return minutesAmout
 }
-

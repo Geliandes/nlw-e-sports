@@ -1,9 +1,9 @@
-import { StyleSheet } from 'react-native';
-import { THEME } from '../../theme';
+import { StyleSheet } from "react-native";
+import { THEME } from "../../theme";
 
 export const styles = StyleSheet.create({
   container: {
-    width: '100%',
+    width: "100%",
     marginBotton: 16,
   },
   label: {
@@ -16,5 +16,5 @@ export const styles = StyleSheet.create({
     fontSize: THEME.FONT_SIZE.SM,
     fontFamily: THEME.FONT_FAMILY.BOLD,
     marginBottom: 16,
-  }
+  },
 });
