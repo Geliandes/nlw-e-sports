@@ -13,6 +13,6 @@ export const styles = StyleSheet.create({
   },
   contentList:{
     paddingLeft: 32,
-    paddingRight: 32aG,
+    paddingRight: 32,
   }
 });
