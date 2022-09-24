@@ -29,19 +29,19 @@ const prisma = new client_1.PrismaClient();
 */
 // HTTP methods / API RESTful / HTTP Codes
 // GET, POST, PUT, PATCH, DELETE
-app.get('/games', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+app.get("/games", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const games = yield prisma.game.findMany({
         include: {
             _count: {
                 select: {
                     Ad: true,
-                }
-            }
-        }
+                },
+            },
+        },
     });
     return response.json(games);
 }));
-app.post('/games/:id/ads', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/games/:id/ads", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const gameId = request.params.id;
     const body = request.body;
     const ad = yield prisma.ad.create({
@@ -50,16 +50,16 @@ app.post('/games/:id/ads', (request, response) => __awaiter(void 0, void 0, void
             name: body.name,
             yearsPlaying: body.yearsPlaying,
             discord: body.discord,
-            weekDays: body.weekDays.join(','),
+            weekDays: body.weekDays.join(","),
             hourStart: (0, convert_hour_string_to_minutes_1.convertHourStringToMinutes)(body.hourStart),
             hourEnd: (0, convert_hour_string_to_minutes_1.convertHourStringToMinutes)(body.hourEnd),
             useVoiceChannel: body.useVoiceChannel,
-            createdAt: body.createdAt
-        }
+            createdAt: body.createdAt,
+        },
     });
     return response.status(201).json(ad);
 }));
-app.get('/games/:id/ads', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+app.get("/games/:id/ads", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const gameId = request.params.id;
     const ads = yield prisma.ad.findMany({
         select: {
@@ -75,14 +75,14 @@ app.get('/games/:id/ads', (request, response) => __awaiter(void 0, void 0, void 
             gameId: gameId,
         },
         orderBy: {
-            createdAt: 'desc'
-        }
+            createdAt: "desc",
+        },
     });
-    return response.json(ads.map(ad => {
-        return Object.assign(Object.assign({}, ad), { weekDays: ad.weekDays.split(','), hourStart: (0, convert_minutes_to_hour_string_1.convertMinutesToHourString)(ad.hourStart), hourEnd: (0, convert_minutes_to_hour_string_1.convertMinutesToHourString)(ad.hourEnd) });
+    return response.json(ads.map((ad) => {
+        return Object.assign(Object.assign({}, ad), { weekDays: ad.weekDays.split(","), hourStart: (0, convert_minutes_to_hour_string_1.convertMinutesToHourString)(ad.hourStart), hourEnd: (0, convert_minutes_to_hour_string_1.convertMinutesToHourString)(ad.hourEnd) });
     }));
 }));
-app.get('/ads/:id/discord', (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+app.get("/ads/:id/discord", (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const adId = request.params.id;
     const ad = yield prisma.ad.findUniqueOrThrow({
         select: {
@@ -90,10 +90,12 @@ app.get('/ads/:id/discord', (request, response) => __awaiter(void 0, void 0, voi
         },
         where: {
             id: adId,
-        }
+        },
     });
     return response.json({
         discord: ad.discord,
     });
 }));
-app.listen(3030);
+app.listen(process.env.PORT || 3333, () => {
+    console.log(`servidor rodando`);
+});

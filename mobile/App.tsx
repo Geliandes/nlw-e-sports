@@ -8,7 +8,6 @@ import {
   Inter_900Black,
 } from "@expo-google-fonts/inter";
 import { Subscription } from "expo-modules-core";
-import { Home } from "./src/screens/Home";
 import { Background } from "./src/components/Background";
 import { Loading } from "./src/components/Loading";
 import { Routes } from "./src/routes";

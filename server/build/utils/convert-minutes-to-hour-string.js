@@ -1,5 +1,5 @@
 "use strict";
-// 18:00 -> 1080
+// 1080 -> 18:00
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.convertMinutesToHourString = void 0;
 function convertMinutesToHourString(minutesAmount) {

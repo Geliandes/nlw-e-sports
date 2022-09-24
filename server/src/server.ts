@@ -107,4 +107,6 @@ app.get("/ads/:id/discord", async (request, response) => {
   });
 });
 
-app.listen(3030);
+app.listen(process.env.PORT || 3333, ()=>{
+  console.log(`servidor rodando`)
+});
